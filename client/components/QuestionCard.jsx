@@ -9,8 +9,9 @@ import Button from 'react-bootstrap/Button';
 
 const QuestionCard = (props) => {
   //props from QuestionsContainer get assigned to each instance of QuestionCard
-  const { key, isActive, title, description, chatURL } = props;
+  const { id, title, description, url, creator, isOpen } = props;
 
+  // console.log(props);
 
 // let answerButton = '';
 
@@ -26,15 +27,18 @@ const QuestionCard = (props) => {
 
 
 
-<Card key={key}>
+<Card key={id}>
   <Card.Body>
 
 <div className="question-container">
   <Card.Title>{title}</Card.Title>
-  <Button variant="primary">Answer question</Button>
+  <Button variant="primary" className="min-button">Answer question</Button>
 </div>
     <Card.Text>
-    {description}
+
+{description}
+          
+
     </Card.Text>
   </Card.Body>
 </Card>

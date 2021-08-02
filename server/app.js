@@ -19,7 +19,7 @@ app.get("/api/hello", (req, res) => {
 });
 
 app.use("/users", userRouter);
-app.use('/questions', questionRouter);
+app.use('/api/questions', questionRouter);
 app.use('/messages', messageRouter);
 // //route handler for main page
 // app.get('/', (req,res) => {

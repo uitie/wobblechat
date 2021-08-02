@@ -19,7 +19,6 @@
 html {
   box-sizing: border-box;
   font: 100% 'Source Sans Pro', sans-serif;
-  background-color: aquamarine;
 
 }
 
@@ -122,3 +121,19 @@ body {
 .chat-style{
   background-color: cadetblue;
 }
+
+.min-button{
+  min-width: 150px;
+  margin-left:5px;
+}
+
+/* Chatroom styling */
+
+#form-chat { background: rgba(0, 0, 0, 0.15); padding: 0.25rem; display: flex; height: 3rem; box-sizing: border-box; backdrop-filter: blur(10px); }
+      #input-chat { border: none; padding: 0 1rem; flex-grow: 1; border-radius: 2rem; margin: 0.25rem; }
+      #input-chat:focus { outline: none; }
+      #form-chat > button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; }
+
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages > li { padding: 0.5rem 1rem; }
+      #messages > li:nth-child(odd) { background: #efefef; }
