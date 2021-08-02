@@ -1,0 +1,124 @@
+
+/* Google font "Faustina" for brandname */
+
+@import url('https://fonts.googleapis.com/css2?family=Faustina&display=swap');
+
+/* reset default styles */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  /* position: relative; */
+}
+
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+html {
+  box-sizing: border-box;
+  font: 100% 'Source Sans Pro', sans-serif;
+  background-color: aquamarine;
+
+}
+
+
+body {
+  margin: 0px;
+  /* line-height: 1.3;
+  font-family: 'Source Sans Pro', sans-serif; */
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 1.6rem !important;
+  font-weight: bold !important;
+  font-family: 'Faustina';
+
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+
+
+small {
+  font-size: 1.1rem;
+}
+
+figure {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+button {
+  border-radius: 0;
+  background: transparent;
+}
+
+.question-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;;
+}
+
+.question-window{
+/* background-color: aquamarine; */
+}
+
+/* app container styling */
+body {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background: rgba(22, 22, 22, 0.915);
+  color: #e4e4e4;
+  background-color: rgb(209, 209, 209) !important;
+  padding-bottom:50px;
+
+}
+
+.mainSection {
+  margin-bottom: 5rem;
+}
+
+
+.brandname {
+  font-family: 'Faustina';
+  font-size: 40px;
+  text-decoration: none;
+  font-weight: bold;
+  color:black;
+
+}
+
+.top-menu-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-top: 10px;
+}
+
+.chat-style{
+  background-color: cadetblue;
+}
