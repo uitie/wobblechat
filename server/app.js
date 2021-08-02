@@ -6,8 +6,8 @@ const cookieParser = require("cookie-parser");
 const debugRouter = require("./routers/debug.js");
 const userRouter = require("./routers/user.js");
 const globalErrorHandler = require("./routers/errors");
-// const questionRouter = require("./routers/question.js");
-// const messageRouter = require(".routers/message.js");
+const questionRouter = require("./routers/question.js");
+const messageRouter = require("./routers/message.js");
 
 //parsing request body
 app.use(express.json());
@@ -19,8 +19,8 @@ app.get("/api/hello", (req, res) => {
 });
 
 app.use("/users", userRouter);
-// app.use('/questions', questionRouter); // --> is this a different endpoint?
-// app.use('/messages', messageRouter);
+app.use('/questions', questionRouter);
+app.use('/messages', messageRouter);
 // //route handler for main page
 // app.get('/', (req,res) => {
 //   res.sendFile(path.resolve(__dirname, '../client/index.html'));

@@ -55,6 +55,7 @@ userController.signInUser = async (req, res, next) => {
         message: "That username and password is not valid.",
       });
 
+      
     user = rows[0];
   } catch (err) {
     return next({

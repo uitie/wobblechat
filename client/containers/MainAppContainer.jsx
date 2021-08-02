@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-// import CastleCard from './CastleCard';
-// import DetailsModal from './DetailsModal';
 import QuestionsContainer from './QuestionsContainer';
+<<<<<<< HEAD
 import CreateQuestionForm from '../components/CreateQuestionForm';
+=======
+import Chat from '../components/Chat';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
+>>>>>>> upstream/dev
 
 class MainAppContainer extends Component {
   constructor(props) {
@@ -37,22 +42,22 @@ class MainAppContainer extends Component {
     {
       questionId: 1,
       isActive: true,
-      title: 'why is the sky blue?',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      title: 'Why is the sky blue?',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       chatURL: 'http://www.yourchat.com?id=56'
    },
    {
     questionId: 2,
     isActive: true,
-    title: 'where do babies come from?',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    title: 'Where do babies come from?',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     chatURL: 'http://www.yourchat.com?id=56'
   },
    {
     questionId: 3,
     isActive: false,
-    title: 'how does react work?',
-    description: 'Hodor. Hodor hodor, hodor. Hodor hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor.',
+    title: 'How does react work?',
+    description: 'Hodor. Hodor hodor, hodor. Hodor hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     chatURL: 'http://www.yourchat.com?id=56'
   }
   ];
@@ -81,11 +86,26 @@ class MainAppContainer extends Component {
     );
 
     return (
-<div>
-<Link to={'/signout'}><button type="button"> Sign out </button></Link>
+<>
+<div className="top-menu-container"><Link to={'/'} className="brandname">Wobblechat</Link>
+<div><Link to={'/create'}><Button variant="primary">Ask a question</Button></Link>
+&nbsp;&nbsp;<Link to={'/signout'}><Button variant="secondary">Sign out</Button></Link></div>
+</div>
+
+<Card classname="chat-style">
+  <Card.Body><br/><br/><br/><br/>This is where the chat window will be displayed.<br/><br/><br/><br/></Card.Body>
+</Card>
+<br/>
+
 <QuestionsContainer  questions={this.state.questions} />
+<<<<<<< HEAD
 <CreateQuestionForm />
 </div>          
+=======
+
+{/* <Chat /> */}
+  </>        
+>>>>>>> upstream/dev
 
 )
   }

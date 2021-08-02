@@ -7,6 +7,7 @@ const uri =
   "postgres://pyrlesph:y49KNIFGACz5VEWNtTL8QH8auBdno8ha@chunee.db.elephantsql.com/pyrlesph";
 const pool = new Pool({
   connectionString: uri,
-});
+}
+);
 
 module.exports = pool;

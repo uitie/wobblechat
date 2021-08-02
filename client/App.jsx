@@ -4,7 +4,10 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Login from './Login';
 import ProtectedRoute from './ProtectedRoute';
 import MainAppContainer from './containers/MainAppContainer';
-//import './stylesheets/styles.css';
+import './stylesheets/styles.css';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const RoutingApp = props => {
   return (
