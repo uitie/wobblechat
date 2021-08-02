@@ -1,11 +1,12 @@
 import React from 'react';
 import {useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 
 const Login = (props) => {
   const [userData, setUserData] = useState({ username: '', password: ''});
   const [errorMessage, setErrorMessage] = useState({ value: '' });
+  const [authStatus, setAuthStatus] = useState(false);
 
   //custom hook to update state with current value
   const handleInputChange = (e) => {
@@ -22,8 +23,11 @@ const Login = (props) => {
 
     //for testing purposes only
     userData.username === 'admin' && userData.password === 'password' ?
+      ( localStorage.setItem('authStatusInLocalStorage', true)
+      ) :
+
       //user is now authenticated and redirected to index(mainappcontainer)
-      ( window.location.pathname = '/' ) :
+      //set local storage logged in property to true
       setErrorMessage((prevState) => ({ value: 'Invalid credentials' }));
 
   }
