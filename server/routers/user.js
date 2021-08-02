@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const userController = require("../controllers/user");
 const cookieController = require("../controllers/cookie");
+const questionController = require("../controllers/question");
 
 const userRouter = Router();
 
@@ -23,7 +24,7 @@ userRouter.post(
 );
 
 // Eliminates cookie and sends user back to home page.
-userRouter.post("/signout", cookieController.unsetCookies, (_req, res) => {
+userRouter.post("/signout", cookieController.unsetCookies, questionController.setInactive, (_req, res) => {
   res.status(200).redirect("/");
 });
 

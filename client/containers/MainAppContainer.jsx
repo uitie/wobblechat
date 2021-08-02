@@ -3,14 +3,21 @@ import { Link } from 'react-router-dom';
 
 import QuestionsContainer from './QuestionsContainer';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import CreateQuestionForm from '../components/CreateQuestionForm';
 =======
+=======
+import CreateQuestionForm from '../components/CreateQuestionForm';
+>>>>>>> 31b8a912cd275fe44120c051074c401fe2185949
 import Chat from '../components/Chat';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
+<<<<<<< HEAD
 >>>>>>> upstream/dev
 
+=======
+>>>>>>> 31b8a912cd275fe44120c051074c401fe2185949
 class MainAppContainer extends Component {
   constructor(props) {
     super(props);
@@ -99,6 +106,7 @@ class MainAppContainer extends Component {
 
 <QuestionsContainer  questions={this.state.questions} />
 <<<<<<< HEAD
+<<<<<<< HEAD
 <CreateQuestionForm />
 </div>          
 =======
@@ -107,6 +115,10 @@ class MainAppContainer extends Component {
   </>        
 >>>>>>> upstream/dev
 
+=======
+<CreateQuestionForm />
+  </>        
+>>>>>>> 31b8a912cd275fe44120c051074c401fe2185949
 )
   }
 }

@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS questions (
   description text NOT NULL,
   url varchar(100) UNIQUE NOT NULL,
   isAnswered boolean DEFAULT false NOT NULL,
-  creator integer REFERENCES users(id),
+  creator integer REFERENCES users(id) NOT NULL,
   /* Can you do a foreign key reference of a boolean in another table? The boolean is not a key... */
   isOpen boolean DEFAULT false NOT NULL
 );

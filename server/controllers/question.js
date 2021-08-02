@@ -6,87 +6,63 @@ const questionController = {};
 
 //getQuestions should return an array of Questions
 questionController.getQuestions = (req, res, next) => {
-  const questionQuery = 'select id,title,description,url from questions where isAnswered = false'
-  // console.log("response: ", res);
-  // console.log("requestion: ",  req);
+  const questionQuery = 'SELECT id,title,description,url,isOpen,isAnswered,creator FROM questions WHERE isAnswered = false ORDER BY id DESC'
   pool
     .query(questionQuery)
-    .then(questions => {
-      // console.log("response: ", questions);
-      const {id, title, description, url} = questions.rows[0];
-      res.locals.questions = questions;
+    .then(data => {
+      res.locals.questions = data.rows;
+      return next();
     })
     .catch(err => {
       return next({
-          status: 500,
-          message: "Error querying Questions",
-          error: err
+        status: 500,
+        message: "Error querying Questions",
       });
     })
-  return next();
 }
 
 //postQuestion should create a Question and next() will call openChat
 questionController.postQuestion = (req, res, next) => {
-  // ----------> url comes from websockets
+  // ----------> url comes from websockets - 
   //userid comes from user controller (prev step in create question). 
-  const url = 'testKenny10';
-  const title = 'testingPostController';
-  const description = 'test';
-  const creator = '2';
-  const params = [url,title,description,creator];
-  const insertQuestion = 'INSERT INTO questions (url,title,description,creator) VALUES ($1,$2,$3,$4) RETURNING *'
+
+  const url = "testKenny22"
+  const { ssid } = req.cookies; // { id: 7 }
+  const { title, description } = req.body;
+  const params = [url,title,description,ssid];
+  const insertQuestion = 'INSERT INTO questions (url,title,description,creator) VALUES ($1,$2,$3,$4) RETURNING questions'
 
   pool
     .query(insertQuestion, params)
-    .then(newQuestion => {
-      // console.log(newQuestion);
-      res.locals.newQuestion = newQuestion;
+    .then(data => {
+      return next();
     })
     .catch(err => {
+      console.log(err)
       return next({
         status: 500,
         message: "Error creating Questions",
-        error: err
       })
     })
-  return next();
+
 }
 
-//openChat should... send a req to Websockets? 
-//gets details from messages
-//puts details into question
-questionController.getMessages = (req, res, next) => {
-  //needs to pull existing Messages related to Questions (join tables)
-  const prevMessages = `SELECT * FROM messages LEFT JOIN questions ON messages.questionId = questions.id AND questions.id = ${req.params.id}`
-  
-  pool
-    .query(prevMessages)
-    .then(messages => {
-      if(!messages) return next();
-      res.locals.messages = messages;
-      // console.log(messages);
-    })
-    .catch(err => {
-      return next({
-        status: 500,
-        message: "Error grabbing messages",
-        error: err
-      })
-    })
-  return next();
-}
-  
-//   //isActive is true ------> is this a put? 
-// questionController.putQuestion = (req, res, next) => {
-//   return next();
-// }
-
-// //closeChat should... put isActive = false
-
-// questionController.putChat = (req, res, next) => {
-//   return next();
-// }
+questionController.setInactive = (req, res, next) => {
+  // Grab the user ID from cookies
+  const { ssid } = req.cookies;
+  // Make DB query, setting question(s) of that user to be inactive.
+  const query = `UPDATE questions SET isOpen = false WHERE creator = $1`;
+  // Calling next (no need to return anything)
+  const params = [ssid]
+  pool.query(query, params).then(result => {
+    return next();
+  }).catch(err => {
+    return next({
+      message: "Could not set user questions to inactive",
+      status: 500
+    });
+  })
+};
 
 //isAnswered should update (put) isAnswered field to True
 questionController.putAnswered = (req, res, next) => {
@@ -102,7 +78,6 @@ questionController.putAnswered = (req, res, next) => {
       return next({
         status: 500,
         message: "Error setting isAnswered to true",
-        error: err
       })
     })
   return next();
